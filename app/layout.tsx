@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Levante",
+  title: "Projeto Elisa",
   description: "Plataforma digital para prevenção e recuperação de pessoas com dependência em apostas, combinando IA conversacional via WhatsApp, encaminhamento a unidades de apoio presenciais, simulação de relatório clínico e landing page de cadastro.",
 };
 

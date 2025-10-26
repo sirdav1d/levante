@@ -44,8 +44,35 @@ export default function Who() {
 
   const onSubmit = (data: FormData) => {
     console.log('Formulário enviado:', data)
-    alert('Solicitação enviada com sucesso! Entraremos em contato em breve.')
+    
+    // Gerar mensagem padrão para WhatsApp
+    const message = generateWhatsAppMessage(data)
+    
+    // Número do WhatsApp (substitua pelo número da sua empresa/organização)
+    const whatsappNumber = '5511920060646' // Formato: código do país + DDD + número
+    
+    // Gerar URL do WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    
+    // Abrir WhatsApp em nova aba
+    window.open(whatsappUrl, '_blank')
+    
+    // Mostrar confirmação
+    alert('Redirecionando para o WhatsApp...')
     form.reset()
+  }
+
+  const generateWhatsAppMessage = (data: FormData) => {
+    const { name, city, whatsapp } = data
+    
+    return `Olá! Gostaria de solicitar ajuda.
+
+📋 *Dados da solicitação:*
+• Nome: ${name}
+• Cidade: ${city}
+• WhatsApp: ${whatsapp}
+
+Por favor, entre em contato comigo para mais detalhes. Obrigado! 🙏`
   }
 
   return (
@@ -175,7 +202,7 @@ export default function Who() {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={!form.watch('lgpdConsent')}
+                  disabled={!form.watch('lgpdConsent')||!form.formState.isValid}
                   className="w-full disabled:bg-zinc-400 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   <Send className="w-5 h-5" />

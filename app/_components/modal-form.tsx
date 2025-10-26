@@ -214,7 +214,7 @@ Por favor, entre em contato comigo para mais detalhes. Obrigado! 🙏`
             <Button
               type="submit"
               size="lg"
-              disabled={!form.watch('lgpdConsent')}
+              disabled={!form.watch('lgpdConsent')||!form.formState.isValid}
               className="w-full disabled:bg-zinc-400 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <Send className="w-5 h-5" />

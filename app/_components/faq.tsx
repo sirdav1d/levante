@@ -24,10 +24,7 @@ export default function Faq() {
       question: "Como é feito o relatório de risco?",
       answer: "O relatório é gerado automaticamente pela nossa IA baseado na conversa que você teve. Ele avalia seu nível de risco de forma objetiva e sem julgamentos, considerando padrões de comportamento, frequência de apostas e impacto na sua vida. O relatório é confidencial e pode ser usado para orientar seu tratamento."
     },
-    {
-      question: "Posso cadastrar alguém que precisa de ajuda?",
-      answer: "Sim, você pode cadastrar um amigo ou familiar que precisa de ajuda. Basta preencher o formulário indicando que é para outra pessoa. Nós entraremos em contato de forma discreta e ofereceremos o mesmo suporte anônimo e gratuito. É uma forma de ajudar quem você ama sem invadir a privacidade."
-    },
+  
     {
       question: "Como vocês garantem a privacidade dos meus dados?",
       answer: "Seguimos rigorosamente a LGPD e utilizamos as mais altas tecnologias de segurança para proteger seus dados. Todas as conversas são criptografadas, não armazenamos informações pessoais identificáveis e você pode solicitar a exclusão dos seus dados a qualquer momento. Seu anonimato e privacidade são nossa prioridade absoluta."
