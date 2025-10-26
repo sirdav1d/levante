@@ -243,7 +243,7 @@ export const NavbarLogo = () => {
         width={30}
         height={30}
       />
-      <span className="font-medium text-black dark:text-white">Projeto Elisa</span>
+      <span className="font-medium text-black dark:text-white text-lg">Projeto Elisa</span>
     </a>
   );
 };

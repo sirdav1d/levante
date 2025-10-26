@@ -76,8 +76,8 @@ Por favor, entre em contato comigo para mais detalhes. Obrigado! 🙏`
   }
 
   return (
-    <section id='you' className="py-20 rounded-2xl text-white bg-zinc-950 w-full ">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 items-start ">
+    <section id='you' className="py-20 h-full rounded-2xl text-white bg-zinc-950 w-full ">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 items-start ">
         {/* Header */}
         <div className=" h-full relative">
           <h2 className="text-4xl font-bold  mb-4">
@@ -87,8 +87,8 @@ Por favor, entre em contato comigo para mais detalhes. Obrigado! 🙏`
             Nossa plataforma oferece suporte tanto para quem precisa de ajuda quanto para quem quer ajudar alguém próximo
           </p>
           <div>
-          <div className="grid grid-cols-3 gap-4 mb-8 mt-auto bottom-0 w-full absolute">
-  <div className="text-start mt-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8 mt-auto bottom-0 w-full lg:absolute">
+  <div className="text-start lg:mt-auto mt-5">
     <div className="text-3xl font-bold text-emerald-500">2.3M</div>
     <div className="text-sm text-zinc-400">Brasileiros afetados</div>
   </div>
@@ -104,7 +104,7 @@ Por favor, entre em contato comigo para mais detalhes. Obrigado! 🙏`
           </div>
         </div>
       
-        <div className="max-w-2xl mx-auto">
+        <div className="lg:max-w-2xl mx-auto ">
           <div className="bg-white rounded-xl p-8 border border-zinc-200">
             <h3 className="text-2xl font-bold text-zinc-900 mb-6 text-center">
               Solicite ajuda agora

@@ -6,7 +6,7 @@ import ModalForm from './modal-form'
 
 export default function About() {
   return (
-    <section className="py-20 relative overflow-hidden h-screen flex items-center justify-center">
+    <section className="py-20 relative overflow-hidden min-h-0h-screen flex items-center justify-center">
       <DottedGlowBackground
         className="pointer-events-none mask-radial-to-90% mask-radial-at-center"
         opacity={.2}
@@ -31,12 +31,12 @@ export default function About() {
             
             
             {/* Main title */}
-            <h2 className="text-5xl font-bold  leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold  leading-tight">
            Projeto Elisa
             </h2>
             
             {/* Description */}
-            <p className="text-lg text-muted-foreground text-balance leading-relaxed max-w-lg">
+            <p className="lg:text-lg text-muted-foreground text-balance leading-relaxed max-w-lg">
               A criatividade envolve quebrar padrões esperados para olhar as coisas de uma forma diferente. 
               Fazer mudanças é um esforço coletivo que pode trazer muitos desafios!
             </p>
@@ -53,12 +53,12 @@ export default function About() {
           </div>
 
           {/* Right Column - Cards */}
-          <div className="relative">
+          <div className="relative mt-10 lg:mt-0">
             {/* Decorative dots background */}
           
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-2 gap-5 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-5 grid-cols-1 relative z-10">
               {/* Web Design Card */}
               <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-44">
                 <h3 className="text-xl font-bold text-zinc-900 mb-3">Suporte Online</h3>
@@ -69,7 +69,7 @@ export default function About() {
               </div>
 
               {/* App Design Card */}
-              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-44 mt-20">
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-44 lg:mt-20">
                 <h3 className="text-xl font-bold text-zinc-900 mb-3">Avaliação de Risco</h3>
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
                 Autoconhecimento é poder. Nossa ferramenta de avaliação te ajuda a mapear sua situação atual sem julgamentos.
@@ -78,7 +78,7 @@ export default function About() {
               </div>
 
               {/* UI/UX Design Card */}
-              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 -mt-20 h-44">
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 lg:-mt-20 h-44">
                 <h3 className="text-xl font-bold text-zinc-900 mb-3">Apoio Local</h3>
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">
                 Conectamos você com a rede de apoio mais próxima: terapeutas, grupos e unidades especializadas.

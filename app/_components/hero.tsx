@@ -1,18 +1,15 @@
-import { Button } from "@/components/ui/button";
-import {  ChevronRightIcon } from "lucide-react";
-import Image from "next/image";
+import { Highlighter } from "@/components/ui/highlighter";
 import Background from "./background";
-import { Highlighter } from "@/components/ui/highlighter"
-import ModalForm from "./modal-form"
+import ModalForm from "./modal-form";
 export default function Hero() {
   return (
     
     <div id="home" className="h-screen w-full flex justify-center items-center relative ">
       <Background/>
-      <div className="grid grid-cols-2 container mx-auto">
+      <div className="grid lg:grid-cols-2 container mx-auto">
       <div className="flex flex-col w-full px-5 gap-5 z-20 ">
        
-        <h1 className="text-5xl font-bold leading-[1.2]">Não é fraqueza pedir ajuda. É o jeito mais forte de <Highlighter iterations={4} action="highlight" color="#10b981">recomeçar. </Highlighter></h1>
+        <h1 className="text-4xl lg:text-5xl font-bold leading-[1.2]">Não é fraqueza pedir ajuda. É o jeito mais forte de <Highlighter animationDuration={1000} iterations={4} action="highlight" color="#10b981">recomeçar. </Highlighter></h1>
         <p className="text-lg text-foreground text-balance">Converse com nossa IA no WhatsApp e encontre ajuda anônima e gratuita.</p>
         <ModalForm 
           triggerText="Quero recuperar o controle"

@@ -37,7 +37,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full bg-black/0">
+    <div className="relative w-full bg-black/0 py-2">
       <Navbar >
         {/* Desktop Navigation */}
         <NavBody>
@@ -78,11 +78,7 @@ export function Header() {
                 triggerVariant="default"
                 className="w-full"
               />
-              <ModalForm 
-                triggerText="Book a call"
-                triggerVariant="default"
-                className="w-full"
-              />
+              
             </div>
           </MobileNavMenu>
         </MobileNav>

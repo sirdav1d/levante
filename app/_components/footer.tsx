@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className='w-full flex items-center flex-col'> 
+          <div className='w-full flex lg:items-center flex-col'> 
             <h4 className="text-lg font-semibold mb-6">Links Rápidos</h4>
             <ul className="space-y-3">
               <li>

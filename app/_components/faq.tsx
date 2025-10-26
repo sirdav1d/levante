@@ -32,7 +32,7 @@ export default function Faq() {
   ]
 
   return (
-    <section id='faq' className="py-20">
+    <section id='faq' className="py-20 w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -46,7 +46,7 @@ export default function Faq() {
         </div>
 
         {/* FAQ Accordion */}
-        <div className=" w-3xl rounded-2xl border">
+        <div className=" lg:w-3xl rounded-2xl ">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem 
@@ -70,9 +70,9 @@ export default function Faq() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-20 relative overflow-hidden w-full">
+        <div className="text-center  mt-20 relative overflow-hidden w-full px-5">
           <div className="bg-white/10 backdrop-blur-xs rounded-2xl z-50 p-8 shadow-lg border border-zinc-200 max-w-2xl mx-auto">
-            <h3 className="text-5xl font-bold text-zinc-900 mb-4">
+            <h3 className="text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
               Ainda tem dúvidas?
             </h3>
            
