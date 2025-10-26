@@ -1,166 +1,224 @@
 'use client'
 
-import React, { useState } from 'react'
-import { User, Heart, Send, Check } from 'lucide-react'
+import React from 'react'
+import { Send } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/ui/checkbox'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+
+// Schema de validação com Zod
+const formSchema = z.object({
+  name: z.string().optional(),
+  city: z.string().min(1, 'Cidade é obrigatória'),
+  whatsapp: z.string().min(1, 'WhatsApp é obrigatório').regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Formato inválido. Use (11) 99999-9999'),
+  isForMe: z.boolean(),
+  lgpdConsent: z.boolean().refine(val => val === true, {
+    message: 'Você deve aceitar os termos de privacidade'
+  })
+})
+
+type FormData = z.infer<typeof formSchema>
 
 export default function Who() {
-  const [formData, setFormData] = useState({
-    name: '',
-    city: '',
-    whatsapp: '',
-    isForMe: true,
-    lgpdConsent: false
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      city: '',
+      whatsapp: '',
+      isForMe: true,
+      lgpdConsent: false
+    }
   })
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Aqui você pode implementar a lógica de envio
-    console.log('Formulário enviado:', formData)
+  const onSubmit = (data: FormData) => {
+    console.log('Formulário enviado:', data)
     alert('Solicitação enviada com sucesso! Entraremos em contato em breve.')
+    form.reset()
   }
 
   return (
-    <section id='you' className="py-20 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id='you' className="py-20 rounded-2xl text-white bg-zinc-950 w-full ">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 items-start ">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-zinc-900 mb-4">
+        <div className=" h-full relative">
+          <h2 className="text-4xl font-bold  mb-4">
             Para quem é
           </h2>
-          <p className="text-lg text-muted-foreground text-balance text-zinc-600 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground text-balance  max-w-3xl mx-auto">
             Nossa plataforma oferece suporte tanto para quem precisa de ajuda quanto para quem quer ajudar alguém próximo
           </p>
+          <div>
+          <div className="grid grid-cols-3 gap-4 mb-8 mt-auto bottom-0 w-full absolute">
+  <div className="text-start mt-auto">
+    <div className="text-3xl font-bold text-emerald-500">2.3M</div>
+    <div className="text-sm text-zinc-400">Brasileiros afetados</div>
+  </div>
+  <div className="text-start">
+    <div className="text-3xl font-bold text-emerald-500">24/7</div>
+    <div className="text-sm text-zinc-400">Atendimento disponível</div>
+  </div>
+  <div className="text-start">
+    <div className="text-3xl font-bold text-emerald-500">100%</div>
+    <div className="text-sm text-zinc-400">Anônimo e gratuito</div>
+  </div>
+</div>
+          </div>
         </div>
-
       
-
-        {/* Form */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-3xl p-8 border border-zinc-200">
+          <div className="bg-white rounded-xl p-8 border border-zinc-200">
             <h3 className="text-2xl font-bold text-zinc-900 mb-6 text-center">
               Solicite ajuda agora
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6 " >
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-zinc-700 mb-2">
-                  Nome (opcional)
-                </label>
-                <input
-                  type="text"
-                  id="name"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                {/* Name */}
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-zinc-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Seu nome ou da pessoa"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nome</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Seu nome ou da pessoa" 
+                          {...field} 
+                          className="px-4 py-3 rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* City */}
-              <div>
-                <label htmlFor="city" className="block text-sm font-medium text-zinc-700 mb-2">
-                  Cidade
-                </label>
-                <input
-                  type="text"
-                  id="city"
+                {/* City */}
+                <FormField
+                  control={form.control}
                   name="city"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-zinc-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Sua cidade"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Cidade</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Sua cidade" 
+                          {...field} 
+                          className="px-4 py-3 rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* WhatsApp */}
-              <div>
-                <label htmlFor="whatsapp" className="block text-sm font-medium text-zinc-700 mb-2">
-                  WhatsApp
-                </label>
-                <input
-                  type="tel"
-                  id="whatsapp"
+                {/* WhatsApp */}
+                <FormField
+                  control={form.control}
                   name="whatsapp"
-                  value={formData.whatsapp}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-zinc-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="(11) 99999-9999"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>WhatsApp</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="tel"
+                          placeholder="(11) 99999-9999" 
+                          {...field} 
+                          className="px-4 py-3 rounded-xl"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              {/* Radio buttons for "Sou eu" / "É outra pessoa" */}
-              <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-3">
-                  Esta solicitação é para:
-                </label>
-                <div className="space-y-3">
-                  <label className="flex items-center cursor-pointer">
-                    <input
-                      type="radio"
-                      name="isForMe"
-                      checked={formData.isForMe}
-                      onChange={() => setFormData(prev => ({ ...prev, isForMe: true }))}
-                      className="w-4 h-4 text-blue-600 border-zinc-300 focus:ring-blue-500"
-                    />
-                    <span className="ml-3 text-zinc-700">Sou eu que preciso de ajuda</span>
-                  </label>
-                  <label className="flex items-center cursor-pointer">
-                    <input
-                      type="radio"
-                      name="isForMe"
-                      checked={!formData.isForMe}
-                      onChange={() => setFormData(prev => ({ ...prev, isForMe: false }))}
-                      className="w-4 h-4 text-blue-600 border-zinc-300 focus:ring-blue-500"
-                    />
-                    <span className="ml-3 text-zinc-700">É outra pessoa que precisa de ajuda</span>
-                  </label>
-                </div>
-              </div>
+                {/* Radio buttons for "Sou eu" / "É outra pessoa" */}
+                <FormField
+                  control={form.control}
+                  name="isForMe"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Esta solicitação é para:</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={(value) => field.onChange(value === 'true')}
+                          value={field.value ? 'true' : 'false'}
+                          className="space-y-0 mt-2"
+                        >
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="true" id="for-me" />
+                            <label htmlFor="for-me" className="text-zinc-700 cursor-pointer">
+                              Sou eu que preciso de ajuda
+                            </label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="false" id="for-other" />
+                            <label htmlFor="for-other" className="text-zinc-700 cursor-pointer">
+                              É outra pessoa que precisa de ajuda
+                            </label>
+                          </div>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* LGPD Checkbox */}
-              <div className="flex items-start">
-                <input
-                  type="checkbox"
-                  id="lgpdConsent"
+                {/* LGPD Checkbox */}
+                <FormField
+                  control={form.control}
                   name="lgpdConsent"
-                  checked={formData.lgpdConsent}
-                  onChange={handleInputChange}
-                  required
-                  className="w-4 h-4 text-blue-600 border-zinc-300 rounded focus:ring-blue-500 mt-1"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-1 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-sm text-zinc-600">
+                          Autorizo o contato seguro e o tratamento dos meus dados pessoais conforme a{' '}
+                         
+                        </FormLabel>
+                        <FormDescription>
+                          <Button asChild variant={'link'} className='p-0'> 
+                            <a href="#">Política de Privacidade</a>
+                            </Button> </FormDescription>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
                 />
-                <label htmlFor="lgpdConsent" className="ml-3 text-sm text-zinc-600">
-                  Autorizo o contato seguro e o tratamento dos meus dados pessoais conforme a{' '}
-                  <a href="#" className="text-blue-600 hover:underline">Política de Privacidade</a>
-                </label>
-              </div>
 
-              {/* Submit Button */}
-              <Button
-                size={'lg'}
-                type="submit"
-                disabled={!formData.lgpdConsent}
-                className="w-full  disabled:bg-zinc-400 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                <Send className="w-5 h-5" />
-                Enviar ajuda
-              </Button>
-            </form>
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={!form.watch('lgpdConsent')}
+                  className="w-full disabled:bg-zinc-400 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <Send className="w-5 h-5" />
+                  Enviar ajuda
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
-      </div>
+        </div>
     </section>
   )
 }

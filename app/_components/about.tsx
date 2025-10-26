@@ -1,71 +1,96 @@
 import React from 'react'
-import { Shield, Heart, Lock, FileText, ExternalLink } from 'lucide-react'
+import { Shield, Heart, Lock, FileText, ExternalLink, Target, Eye, Star, Users, Phone, Clock, CheckCircle, Play, ArrowRight, ChevronRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import DottedGlowBackground from '@/components/ui/dotted-glow-background'
 
 export default function About() {
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            Sobre o Levante
-          </h2>
-          <p className="text-xlg text-muted-foreground text-balance max-w-3xl mx-auto">
-            Uma plataforma dedicada a oferecer apoio e esperança para quem enfrenta a dependência em apostas
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8">
-            {/* Mission */}
-            <div className="bg-zinc-800/50 rounded-2xl p-6 border border-zinc-700">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mr-4">
-                  <Heart className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold">Nossa Missão</h3>
-              </div>
-              <p className="text-zinc-300 leading-relaxed">
-                Oferecer suporte humanizado e tecnologia avançada para ajudar pessoas a superarem a dependência em apostas, 
-                promovendo recuperação, bem-estar e uma vida mais saudável através de atendimento anônimo e gratuito.
-              </p>
-            </div>
-
-            {/* Purpose */}
-            <div className="bg-zinc-800/50 rounded-2xl p-6 border border-zinc-700">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mr-4">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold">Nosso Propósito</h3>
-              </div>
-              <p className="text-zinc-300 leading-relaxed">
-                Quebrar o estigma em torno da dependência em apostas, oferecendo um ambiente seguro e acolhedor 
-                onde cada pessoa possa encontrar o apoio necessário para sua jornada de recuperação, sem julgamentos.
-              </p>
-            </div>
-
+    <section className="py-20 relative overflow-hidden h-screen flex items-center justify-center">
+      <DottedGlowBackground
+        className="pointer-events-none mask-radial-to-90% mask-radial-at-center"
+        opacity={.2}
+        gap={10}
+        radius={1.6}
+        colorLightVar="--color-neutral-500"
+        glowColorLightVar="--color-neutral-600"
+        colorDarkVar="--color-neutral-500"
+        glowColorDarkVar="--color-sky-800"
+        backgroundOpacity={0}
+        speedMin={0.3}
+        speedMax={1.6}
+        speedScale={1}
+      />
+     
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid lg:grid-cols-2 items-center">
+          
+          {/* Left Column - Content */}
+          <div className="space-y-4">
+            {/* Small label */}
             
+            
+            {/* Main title */}
+            <h2 className="text-5xl font-bold  leading-tight">
+           Projeto Elisa
+            </h2>
+            
+            {/* Description */}
+            <p className="text-lg text-muted-foreground text-balance leading-relaxed max-w-lg">
+              A criatividade envolve quebrar padrões esperados para olhar as coisas de uma forma diferente. 
+              Fazer mudanças é um esforço coletivo que pode trazer muitos desafios!
+            </p>
+            
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="text-lg rounded-full hover:-translate-y-1 duration-300 transition-all ease-in-out hover:shadow-sm">
+                Saiba mais <ChevronRight/>
+              </Button>
+              
+            </div>
           </div>
 
-          {/* Badge and Links */}
-          <div className="space-y-8">
-            {/* Anonymous Badge */}
-            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-3xl p-8 text-center shadow-2xl">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2">
-                Atendimento 100% Anônimo e Gratuito
-              </h3>
-              <p className="text-green-100 text-lg">
-                Sem custos, sem identificação, apenas apoio e acolhimento para sua recuperação.
-              </p>
-            </div>
+          {/* Right Column - Cards */}
+          <div className="relative">
+            {/* Decorative dots background */}
+          
 
-         
-           
+            {/* Cards Grid */}
+            <div className="grid grid-cols-2 gap-5 relative z-10">
+              {/* Web Design Card */}
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-44">
+                <h3 className="text-xl font-bold text-zinc-900 mb-3">Suporte Online</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed mb-6">
+                Converse conosco via WhatsApp de forma 100% anônima e receba orientação especializada a qualquer hora."
+                </p>
+               
+              </div>
+
+              {/* App Design Card */}
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-44 mt-20">
+                <h3 className="text-xl font-bold text-zinc-900 mb-3">Avaliação de Risco</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed mb-6">
+                Autoconhecimento é poder. Nossa ferramenta de avaliação te ajuda a mapear sua situação atual sem julgamentos.
+                </p>
+                
+              </div>
+
+              {/* UI/UX Design Card */}
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 -mt-20 h-44">
+                <h3 className="text-xl font-bold text-zinc-900 mb-3">Apoio Local</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed mb-6">
+                Conectamos você com a rede de apoio mais próxima: terapeutas, grupos e unidades especializadas.
+                </p>
+              
+              </div>
+
+              <div className="bg-linear-to-br from-zinc-100 to-zinc-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 mt-0 h-44">
+                <h3 className="text-xl font-bold text-zinc-900 mb-3">Rede de Conexòes</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed mb-6">
+               Compartilhe sua história e receba apoio de uma comunidade que acredita na sua capacidade de superar.
+                </p>
+              
+              </div>
+            </div>
           </div>
         </div>
       </div>

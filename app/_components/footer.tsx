@@ -9,17 +9,22 @@ export default function Footer() {
         <div className="flex justify-between items-start md:flex-row flex-col gap-8">
           {/* Brand Section */}
           <div className="w-fit">
-            <div className="flex items-center mb-6">
-              
-              <h3 className="text-2xl font-bold">Levante</h3>
+            <div className="flex items-center mb-6 space-x-2 ">
+            <img
+        src="/logo.png"
+        alt="logo"
+        width={30}
+        height={30}
+      />
+              <h3 className="text-2xl font-medium">Projeto Elisa</h3>
             </div>
             <p className="text-zinc-300 mb-6 leading-relaxed">
               Plataforma digital para prevenção e recuperação de pessoas com dependência em apostas, 
               oferecendo suporte anônimo e gratuito através de IA conversacional.
             </p>
-            <div className="flex items-center gap-2 bg-green-500/20 border border-green-500/30 rounded-lg px-4 py-2 w-fit">
-              <Shield className="w-4 h-4 text-green-400" />
-              <span className="text-sm font-medium text-green-400">
+            <div className="flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/30 rounded-lg px-4 py-2 w-fit">
+              <Shield className="w-4 h-4 text-emerald-400" />
+              <span className="text-sm font-medium text-emerald-400">
                 100% Anônimo e Gratuito
               </span>
             </div>
@@ -141,7 +146,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-zinc-400 mb-4 md:mb-0">
-              © 2025 Levante. Todos os direitos reservados.
+              © 2025 Projeto Elisa. Todos os direitos reservados.
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
               <a href="#" className="text-zinc-400 hover:text-white transition-colors">

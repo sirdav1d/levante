@@ -5,7 +5,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { HelpCircle } from 'lucide-react'
+import { ChevronRight, HelpCircle } from 'lucide-react'
+import DottedGlowBackground from '@/components/ui/dotted-glow-background'
+import { Button } from '@/components/ui/button'
 
 export default function Faq() {
   const faqs = [
@@ -32,7 +34,7 @@ export default function Faq() {
   ]
 
   return (
-    <section className="py-20">
+    <section id='faq' className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -46,7 +48,7 @@ export default function Faq() {
         </div>
 
         {/* FAQ Accordion */}
-        <div className=" w-3xl ">
+        <div className=" w-3xl rounded-2xl border">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem 
@@ -70,24 +72,40 @@ export default function Faq() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-zinc-200 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">
+        <div className="text-center mt-20 relative overflow-hidden w-full">
+          <div className="bg-white/10 backdrop-blur-xs rounded-2xl z-50 p-8 shadow-lg border border-zinc-200 max-w-2xl mx-auto">
+            <h3 className="text-5xl font-bold text-zinc-900 mb-4">
               Ainda tem dúvidas?
             </h3>
-            <p className="text-zinc-600 mb-6">
-              Nossa equipe está pronta para esclarecer qualquer questão
-            </p>
-            <a
+           
+            <Button asChild size={'lg'} className='rounded-full text-lg'>  
+              <a
               href="https://wa.me/5511999999999?text=Tenho%20dúvidas%20sobre%20o%20serviço%20de%20ajuda%20com%20dependência%20em%20apostas"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="inline-flex items-center gap-3  text-white font-semibold px-8 py-4 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              <HelpCircle className="w-5 h-5" />
-              Falar com Especialista
+             
+              Falar com Especialista <ChevronRight/>
             </a>
+            </Button>
+           
           </div>
+          <DottedGlowBackground
+        className="pointer-events-none max-w-2xl z-0 mx-auto mask-radial-to-90% mask-radial-at-center"
+        opacity={.3}
+        gap={10}
+        radius={1.6}
+        colorLightVar="--color-neutral-500"
+        glowColorLightVar="--color-neutral-600"
+        colorDarkVar="--color-neutral-500"
+        glowColorDarkVar="--color-sky-800"
+        backgroundOpacity={0}
+        speedMin={0.3}
+        speedMax={1.6}
+        speedScale={1}
+      />
+
         </div>
       </div>
     </section>

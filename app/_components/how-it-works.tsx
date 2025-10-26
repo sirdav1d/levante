@@ -11,7 +11,7 @@ export default function HowItWorks() {
     },
     {
       icon: Shield,
-      title: "Descubra seu nível de risco",
+      title: "Retome o ",
       description: "Sem julgamentos, apenas apoio",
       color: "bg-emerald-500"
     },
@@ -24,7 +24,7 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section className="h-screen flex items-center justify-center">
+    <section className="py-20 flex items-center justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -41,12 +41,12 @@ export default function HowItWorks() {
           {steps.map((step, index) => {
             const Icon = step.icon
             return (
-              <div key={index} className="relative">
+              <div key={index} className="relative group">
                 {/* Step Card */}
                 <div>
                   {/* Icon */}
                   <div className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center mb-6 mx-auto`}>
-                    <Icon className="w-8 h-8 text-white" />
+                    <Icon className="w-8 h-8 text-white group-hover:scale-120 group-hover:drop-shadow-sm transition-all ease-in-out duration-300" />
                   </div>
                   
                   {/* Content */}

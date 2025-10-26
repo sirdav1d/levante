@@ -26,7 +26,7 @@ export default function Background() {
         src="/hero.png" 
         alt="Hero" 
         fill 
-        className="object-cover transition-transform duration-75 ease-out mask-alpha mask-l-from-black mask-l-from-50%"
+        className="object-cover transition-transform duration-75 ease-out mask-alpha mask-l-from-50% mask-l-to-80%"
         style={{
           transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
         }}
