@@ -21,10 +21,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 // Schema de validação com Zod
 const formSchema = z.object({
-  name: z.string().optional(),
+  name: z.string().min(3,'Nome é obrigatório'),
   city: z.string().min(1, 'Cidade é obrigatória'),
-  whatsapp: z.string().min(1, 'WhatsApp é obrigatório').regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Formato inválido. Use (11) 99999-9999'),
-  isForMe: z.boolean(),
+  whatsapp: z.string().min(1, 'WhatsApp é obrigatório').regex(/^55\d{2}\d{8,9}$/, 'Formato inválido. Use 5511950826317'),
   lgpdConsent: z.boolean().refine(val => val === true, {
     message: 'Você deve aceitar os termos de privacidade'
   })
@@ -39,7 +38,6 @@ export default function Who() {
       name: '',
       city: '',
       whatsapp: '',
-      isForMe: true,
       lgpdConsent: false
     }
   })
@@ -86,7 +84,7 @@ export default function Who() {
             </h3>
             
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-black">
                 {/* Name */}
                 <FormField
                   control={form.control}
@@ -135,7 +133,7 @@ export default function Who() {
                       <FormControl>
                         <Input 
                           type="tel"
-                          placeholder="(11) 99999-9999" 
+                          placeholder="5511950826317" 
                           {...field} 
                           className="px-4 py-3 rounded-xl"
                         />
@@ -145,37 +143,6 @@ export default function Who() {
                   )}
                 />
 
-                {/* Radio buttons for "Sou eu" / "É outra pessoa" */}
-                <FormField
-                  control={form.control}
-                  name="isForMe"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Esta solicitação é para:</FormLabel>
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={(value) => field.onChange(value === 'true')}
-                          value={field.value ? 'true' : 'false'}
-                          className="space-y-0 mt-2"
-                        >
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="true" id="for-me" />
-                            <label htmlFor="for-me" className="text-zinc-700 cursor-pointer">
-                              Sou eu que preciso de ajuda
-                            </label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="false" id="for-other" />
-                            <label htmlFor="for-other" className="text-zinc-700 cursor-pointer">
-                              É outra pessoa que precisa de ajuda
-                            </label>
-                          </div>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
 
                 {/* LGPD Checkbox */}
                 <FormField

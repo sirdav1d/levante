@@ -2,6 +2,7 @@ import React from 'react'
 import { Shield, Heart, Lock, FileText, ExternalLink, Target, Eye, Star, Users, Phone, Clock, CheckCircle, Play, ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import DottedGlowBackground from '@/components/ui/dotted-glow-background'
+import ModalForm from './modal-form'
 
 export default function About() {
   return (
@@ -42,9 +43,11 @@ export default function About() {
             
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg rounded-full hover:-translate-y-1 duration-300 transition-all ease-in-out hover:shadow-sm">
-                Saiba mais <ChevronRight/>
-              </Button>
+              <ModalForm 
+                triggerText="Saiba mais"
+                triggerSize="lg"
+                className="text-lg rounded-full hover:-translate-y-1 duration-300 transition-all ease-in-out hover:shadow-sm"
+              />
               
             </div>
           </div>

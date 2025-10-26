@@ -8,6 +8,7 @@ import {
 import { ChevronRight, HelpCircle } from 'lucide-react'
 import DottedGlowBackground from '@/components/ui/dotted-glow-background'
 import { Button } from '@/components/ui/button'
+import ModalForm from './modal-form'
 
 export default function Faq() {
   const faqs = [
@@ -78,17 +79,11 @@ export default function Faq() {
               Ainda tem dúvidas?
             </h3>
            
-            <Button asChild size={'lg'} className='rounded-full text-lg'>  
-              <a
-              href="https://wa.me/5511999999999?text=Tenho%20dúvidas%20sobre%20o%20serviço%20de%20ajuda%20com%20dependência%20em%20apostas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3  text-white font-semibold px-8 py-4 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-             
-              Falar com Especialista <ChevronRight/>
-            </a>
-            </Button>
+            <ModalForm 
+              triggerText="Falar com Especialista"
+              triggerSize="lg"
+              className="rounded-full text-lg inline-flex items-center gap-3 text-white font-semibold px-8 py-4 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            />
            
           </div>
           <DottedGlowBackground

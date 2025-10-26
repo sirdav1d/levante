@@ -1,17 +1,18 @@
 "use client";
 import {
-  Navbar,
-  NavBody,
-  NavItems,
   MobileNav,
-  NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
-  MobileNavToggle,
   MobileNavMenu,
+  MobileNavToggle,
+  Navbar,
+  NavbarButton,
+  NavbarLogo,
+  NavBody,
+  NavItems
 } from "@/components/ui/resizable-navbar";
-import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import ModalForm from "./modal-form";
+import { ChevronRight } from "lucide-react";
 
 export function Header() {
   const navItems = [
@@ -72,20 +73,16 @@ export function Header() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+              <ModalForm 
+                triggerText="Login"
+                triggerVariant="default"
                 className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+              />
+              <ModalForm 
+                triggerText="Book a call"
+                triggerVariant="default"
                 className="w-full"
-              >
-                Book a call
-              </NavbarButton>
+              />
             </div>
           </MobileNavMenu>
         </MobileNav>
